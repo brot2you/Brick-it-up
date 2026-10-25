@@ -1,15 +1,8 @@
-BRICK IT UP! — V3 CORRIGÉE POUR GITHUB PAGES
+BRICK IT UP! V4 PREMIUM
 
-IMPORTANT : le fichier index.html doit être À LA RACINE du dépôt.
+Décompresser le ZIP et placer index.html, app.js, styles.css et le dossier assets à la racine du dépôt GitHub Pages.
+Remplacer les fichiers existants.
 
-1. Ouvre ton dépôt GitHub > Add file > Upload files.
-2. Décompresse ce ZIP sur ton appareil.
-3. Envoie à la racine du dépôt : index.html, app.js, styles.css, et le dossier assets avec tous ses fichiers.
-   Attention : ne dépose PAS un dossier parent «brick-it-up-fixed» et ne dépose PAS le ZIP tel quel.
-4. Supprime ou ignore les anciens fichiers en double si besoin ; vérifie que index.html est bien à la racine.
-5. Settings > Pages > Deploy from a branch > main / (root).
-6. Recharge la page (sur iPad, ferme l’onglet puis rouvre le lien, au besoin en navigation privée).
-
-Attention : les dossiers assets doivent garder leur nom exact.
-
-Le jeu conserve les 25 défis, le mode libre, et reprend la sauvegarde V1 si elle existe.
+Visuels séparés : island-1.webp à island-5.webp, hero-1.webp à hero-4.webp, world-panorama.webp.
+Toutes les commandes et tous les textes restent interactifs dans le code.
+Les 25 défis existants sont conservés.
