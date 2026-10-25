@@ -1,7 +1,7 @@
-BRICK IT UP! V5 — GitHub Pages
+BRICK IT UP! — V6 GitHub Pages
 
-Décompresse le ZIP puis envoie les fichiers index.html, styles.css, app.js et le dossier assets à la RACINE de ton dépôt GitHub.
+Décompresser à la racine du dépôt GitHub (index.html, app.js, styles.css, assets). Activer Settings > Pages > main / root.
 
-V5 : quatre personnages transparents indépendants, cinq cartes de monde individuelles, couleurs sujet/nom BLEU, verbe ROUGE, complément VERT; progression indiquée par classes 6e/5e/4e/3e.
+Nouveau : en-tête sans petit logo, bouton Home illustré autonome, sélecteur 6e/5e/4e/3e et défis supplémentaires classés. Couleurs : sujet bleu, verbe rouge, complément vert.
 
-Les 25 défis de la V4 sont conservés. Les parcours par classe indiquent une intention pédagogique; les banques de questions restent à étoffer.
+La sélection de classe lance le monde associé ; les mondes restent accessibles librement. Les activités sont des exemples progressifs, pas une couverture exhaustive des programmes.

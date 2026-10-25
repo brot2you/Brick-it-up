@@ -33,3 +33,28 @@
 .world-card b{font-size:15px}.world-card small{font-size:11px;line-height:1.35}
 @media(max-width:900px){.worlds{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-friends{height:245px}.hero-friends img,.hero-friends img:nth-child(2),.hero-friends img:nth-child(3),.hero-friends img:nth-child(4){height:210px}}
 @media(max-width:560px){.worlds{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-friends{width:100%;height:145px;bottom:0;overflow:hidden}.hero-friends img,.hero-friends img:nth-child(2),.hero-friends img:nth-child(3),.hero-friends img:nth-child(4){height:144px;width:25%}.hero{min-height:500px}.world-art{height:auto;aspect-ratio:3/4}.world-card{min-height:0}.world-card b{font-size:14px}}
+
+/* V6 : en-tête net, sans petit logo, bouton Home HD */
+.topbar{min-height:66px;gap:12px}
+.home-game-button{padding:0;border:0;background:transparent;display:grid;place-items:center;width:58px;height:58px;flex:0 0 58px;cursor:pointer;filter:drop-shadow(0 3px 2px #002b7199)}
+.home-game-button img{width:100%;height:100%;display:block;object-fit:contain;border-radius:15px}
+.home-game-button:hover{transform:translateY(-2px)}
+.home-game-button:focus-visible{outline:3px solid #ffda3d;outline-offset:2px;border-radius:14px}
+.header-title{font-weight:1000;font-size:clamp(18px,2.6vw,26px);color:#ffda3f;text-shadow:0 3px #082c77;letter-spacing:.02em;margin-right:auto}
+.header-title span{color:white;font-size:clamp(10px,1.2vw,14px);display:block;text-shadow:none;letter-spacing:0}
+.grade-section{background:linear-gradient(140deg,#fffbee,#e5f4ff);border:5px solid white;border-radius:25px;padding:20px;margin:26px 0 12px;box-shadow:0 8px #3579bd,0 15px 23px #12528f2e}
+.grade-section h2{margin:0 0 5px;color:#104b99;font-size:clamp(21px,3.5vw,28px)}
+.grade-section>p{margin:0 0 16px;color:#385e87;font-weight:800}
+.grade-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.grade-btn{background:linear-gradient(#65c6ff,#1774e4);border:3px solid white;border-bottom:6px solid #144ca0;color:white;border-radius:17px;padding:13px;min-height:93px;box-shadow:0 5px 11px #0a518e33}
+.grade-btn:nth-child(2){background:linear-gradient(#78d77f,#21a955);border-bottom-color:#176d3e}
+.grade-btn:nth-child(3){background:linear-gradient(#ffb45c,#f07829);border-bottom-color:#aa4a1d}
+.grade-btn:nth-child(4){background:linear-gradient(#bb8aff,#7d47d2);border-bottom-color:#52339b}
+.grade-btn b{font-size:30px;font-weight:1000;display:block;line-height:1.2}
+.grade-btn span{font-size:13px;font-weight:900}
+.grade-btn.active{outline:4px solid #ffd33f;outline-offset:1px;transform:translateY(-3px)}
+.grade-detail{border-radius:17px;background:#ffffffed;padding:15px;margin:17px 0 8px;border:2px solid #cfe3ff}
+.grade-detail strong{font-size:20px;color:#144582}
+.grade-detail p{font-size:15px;font-weight:800;line-height:1.5;margin:7px 0 16px}
+.grade-source{display:block;color:#537394;font-size:12px;line-height:1.5;font-weight:700}
+@media(max-width:600px){.grade-grid{grid-template-columns:repeat(2,1fr)}.grade-section{padding:12px}.header-title{font-size:16px}.header-title span{font-size:9px}.home-game-button{width:43px;height:43px;flex-basis:43px}}
