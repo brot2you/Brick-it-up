@@ -96,3 +96,19 @@
 .grow-locked{pointer-events:none;opacity:1;filter:none;cursor:default;outline:2px solid #fffc}
 .grow-workshop .speech p{margin:10px 0 6px}
 @media(max-width:600px){.grow-feature{padding:14px;gap:7px}.grow-feature img{width:85px;height:130px}.grow-feature p{font-size:13px}.grow-feature .cta{padding:10px;font-size:14px}.grow-steps{gap:7px}.grow-steps span{height:34px;width:34px}}
+
+/* V14 — parcours adaptatifs */
+#adaptiveLaunch{display:block;margin:14px auto 6px;max-width:100%;white-space:normal}
+.adapt-panel{max-width:1080px;margin:auto}
+.adapt-grades{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.adapt-grades .selected{border-color:#ffcb3c;background:#fff1bf;color:#543d12;box-shadow:0 3px #d3a237}
+.adapt-levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0}
+.adapt-level{display:flex;flex-direction:column;align-items:flex-start;gap:12px;text-align:left;border-radius:20px;border:3px solid #ffe1a3;padding:22px 14px;background:linear-gradient(140deg,#fffefa,#ffe2a4);color:#323b6a;box-shadow:0 6px #b28c57;cursor:pointer;min-height:175px}
+.adapt-level:nth-child(2){background:linear-gradient(140deg,#e5faff,#94dffa);border-color:#91c9f7}
+.adapt-level:nth-child(3){background:linear-gradient(140deg,#f5e6ff,#d6a5fb);border-color:#c29df4}
+.adapt-level b{font-size:clamp(17px,2.3vw,24px)}
+.adapt-level small{font-size:13px;line-height:1.35}
+.adapt-level span{margin-top:auto;font-size:12px;font-weight:800}
+.adapt-progress{height:12px;border-radius:20px;background:#d9e7f6;margin:18px 0 22px;overflow:hidden}
+.adapt-progress>div{height:100%;border-radius:20px;background:linear-gradient(90deg,#23b777,#70d16d)}
+@media(max-width:680px){.adapt-levels{grid-template-columns:1fr}.adapt-level{min-height:0;padding:16px}.adapt-grades{gap:6px}}
