@@ -1,7 +1,7 @@
-BRICK IT UP! — V6 GitHub Pages
+BRICK IT UP! V7 — 24 BADGES À COLLECTIONNER
 
-Décompresser à la racine du dépôt GitHub (index.html, app.js, styles.css, assets). Activer Settings > Pages > main / root.
+Décompressez ce ZIP et placez son contenu directement à la racine du dépôt GitHub Pages (index.html, app.js, styles.css, dossier assets).
 
-Nouveau : en-tête sans petit logo, bouton Home illustré autonome, sélecteur 6e/5e/4e/3e et défis supplémentaires classés. Couleurs : sujet bleu, verbe rouge, complément vert.
+Nouveautés : galerie de 24 badges, déblocage automatique, raretés bronze/argent/or/légendaire, nouvelles récompenses visibles après la réussite, prise en compte des anciennes sauvegardes.
 
-La sélection de classe lance le monde associé ; les mondes restent accessibles librement. Les activités sont des exemples progressifs, pas une couverture exhaustive des programmes.
+Les étoiles et les badges sont enregistrés sur cet appareil (localStorage). La galerie utilise des médaillons vectoriels/CSS et des symboles ; illustrations individuelles HD à venir.
