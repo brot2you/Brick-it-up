@@ -104,6 +104,7 @@ function renderQuestion(){
  };
  const nxt=document.querySelector('#adaptNext');if(nxt)nxt.onclick=()=>{state.session++;next()};
 }
+window.openAdaptiveBuilder=open;
 setTimeout(link,0);
 const observer=new MutationObserver(()=>{if(document.querySelector('.grade-detail')&&!document.querySelector('#adaptiveLaunch'))link()});
 observer.observe(ROOT,{childList:true,subtree:false});
