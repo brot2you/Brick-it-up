@@ -153,49 +153,122 @@ const GROW_MISSIONS={
    {add:[["for several years","time"]],help:"Combien de temps ?",why:"For exprime la durée."},
    {add:[["before he moved to Scotland","connector"]],help:"Relie les événements.",why:"Before met en relation deux moments du passé."}]}]
 };
-let growGrade="6e",growMission=0,growStage=0,growPlaced=[],growChecked=false,growHint=false,growMessage="";
+
+/* V13 — choix ouverts, distracteurs, variantes correctes, vraie progression cumulative */
+const GROW_OPTIONS={
+ "6e":[[
+  [ ["She","subject"],["plays","verb"] ],
+  [["football","object"],["tennis","object"],["the guitar","object"]],
+  [["every Saturday","time"],["after school","time"],["on Sundays","time"]],
+  [["with her friends","detail"],["with her sister","detail"],["at the sports club","place"]]
+ ],[
+  [["The boy","subject"],["walks","verb"]],
+  [["his dog","object"],["a small dog","object"]],
+  [["in the park","place"],["near the river","place"]],
+  [["every morning","time"],["after school","time"]]
+ ]],
+ "5e":[[
+  [["Maya","subject"],["reads","verb"]],
+  [["an interesting book","object"],["a comic book","object"],["a mystery novel","object"]],
+  [["in her room","place"],["at the library","place"]],
+  [["every evening","time"],["after dinner","time"]]
+ ],[
+  [["He","subject"],["practises","verb"]],
+  [["skateboarding","object"],["football","object"]],
+  [["after school","time"],["every weekend","time"]],
+  [["with his best friend","detail"],["with his classmates","detail"]]
+ ]],
+ "4e":[[
+  [["We","subject"],["watched","verb"]],
+  [["an exciting film","object"],["a documentary","object"]],
+  [["last night","time"],["yesterday evening","time"]],
+  [["because we love stories","connector"],["because we wanted to relax","connector"]]
+ ],[
+  [["They","subject"],["stayed","verb"]],
+  [["at home","place"],["inside","place"]],
+  [["yesterday","time"],["last Sunday","time"]],
+  [["because it was raining","connector"],["because the weather was terrible","connector"]]
+ ]],
+ "3e":[[
+  [["The girl","subject"],["trained","verb"]],
+  [["every day","time"],["three times a week","time"]],
+  [["because she wanted to improve","connector"],["because she hoped to win","connector"]],
+  [["although she was often tired","connector"],["even though it was difficult","connector"]]
+ ],[
+  [["The writer","subject"],["lived","verb"]],
+  [["in London","place"],["in a small town","place"]],
+  [["for several years","time"],["for a long time","time"]],
+  [["before he moved to Scotland","connector"],["before he became famous","connector"]]
+ ]]
+};
+const GROW_TRAPS={
+ subject:["are","does","he"],
+ verb:["play","playing","is play"],
+ object:["a quickly","footballing","the footballs is"],
+ place:["yesterday go","at yesterday","to there"],
+ time:["last yesterday","every Saturdays","in Monday"],
+ detail:["with she friends","with her friend are","in quickly"],
+ connector:["because she improve","although because","because of she"]
+};
+let growGrade="6e",growMission=0,growStage=0,growPlaced=[],growBuilt=[],growChecked=false,growHint=false,growMessage="",growStatus="";
 let growSave={};try{growSave=JSON.parse(localStorage.getItem("brick-grow-v12"))||{}}catch{}
 function growPersist(){try{localStorage.setItem("brick-grow-v12",JSON.stringify(growSave))}catch{}}
 function growData(){return GROW_MISSIONS[growGrade][growMission]}
-function growPrefix(){return growData().steps.slice(0,growStage).flatMap(x=>x.add)}
+function growStageOptions(){return GROW_OPTIONS[growGrade][growMission][growStage]}
 function growExpected(){return growData().steps[growStage].add}
-function growStart(g=chosenGrade||"6e",m=0){growGrade=GROW_MISSIONS[g]?g:"6e";growMission=m;growStage=0;growPlaced=[];growChecked=false;growHint=false;growMessage="";renderGrow()}
+function growStart(g=chosenGrade||"6e",m=0){growGrade=GROW_MISSIONS[g]?g:"6e";growMission=m;growStage=0;growPlaced=[];growBuilt=[];growChecked=false;growHint=false;growMessage="";growStatus="";renderGrow()}
 function growText(arr){return arr.map(x=>x[0]).join(" ")}
+function growChoices(){
+ const step=growData().steps[growStage], valid=growStageOptions(), base=step.add;
+ const options=[];
+ if(growStage===0){
+  base.forEach((piece,i)=>options.push({piece,id:"v"+i,valid:true,order:i}));
+  const bad=base[1][0].endsWith("s")?base[1][0].slice(0,-1):base[1][0]+"s";
+  options.push({piece:[bad,"verb"],id:"x0",valid:false,reason:"Attention à l'accord entre le sujet et le verbe."});
+ }else{
+  valid.forEach((piece,i)=>options.push({piece,id:"v"+i,valid:true}));
+  const type=valid[0][1];
+  const bad=GROW_TRAPS[type]||GROW_TRAPS.detail;
+  options.push({piece:[bad[(growMission+growStage)%bad.length],type],id:"x0",valid:false,reason:"Cette brique n'est pas grammaticalement adaptée à la phrase."});
+ }
+ return options;
+}
 function renderGrow(){
- const d=growData(),prefix=growPrefix(),step=d.steps[growStage],bank=step.add.map((x,i)=>({...{piece:x,id:i}}));
- const ordered=bank.length>1?bank.slice().reverse():bank;
- const all=prefix.concat(growPlaced.map(i=>step.add[i]));
+ const d=growData(),step=d.steps[growStage],options=growChoices();
+ const all=growBuilt.concat(growPlaced.map(id=>options.find(o=>o.id===id).piece));
  const total=GROW_MISSIONS[growGrade].length;
  const completed=Object.keys(growSave).filter(k=>k.startsWith(growGrade+":")&&growSave[k]).length;
  screen().innerHTML='<button class="back-link" id="growBack">← Retour à l’accueil</button>'+
  '<section class="panel grow-workshop"><div class="game-head"><span class="tag">🧱 Agrandis ta phrase · '+E(growGrade)+'</span><strong>Mission '+(growMission+1)+' / '+total+'</strong></div>'+
- '<h2>'+E(d.title)+'</h2><div class="grow-steps">'+d.steps.map((s,i)=>'<span class="'+(i<growStage?"done":i===growStage?"current":"")+'">'+(i<growStage?"✓":i+1)+'</span>').join("")+'</div>'+
- '<div class="mission"><div><div class="speech"><b>Étape '+(growStage+1)+' / '+d.steps.length+'</b><p>'+E(["Pose les fondations de la phrase.","Ajoute une information.","Enrichis encore ta construction.","Construis une phrase plus élaborée."][growStage])+'</p><small>'+E(step.help)+'</small></div></div><div class="scene illustrated-scene"><img src="assets/scenes/'+d.image+'" alt="Illustration de la mission" loading="lazy"></div></div>'+
+ '<h2>'+E(d.title)+'</h2><div class="grow-steps">'+d.steps.map((item,i)=>'<span class="'+(i<growStage?"done":i===growStage?"current":"")+'">'+(i<growStage?"✓":i+1)+'</span>').join("")+'</div>'+
+ '<div class="mission"><div><div class="speech"><b>Étape '+(growStage+1)+' / '+d.steps.length+'</b><p>'+E(["Pose les fondations de la phrase.","Choisis ce que tu veux ajouter.","Enrichis librement ta construction.","Termine avec une précision ou une idée plus complexe."][growStage])+'</p><small>'+E(step.help)+'</small></div></div><div class="scene illustrated-scene"><img src="assets/scenes/'+d.image+'" alt="Illustration de la mission" loading="lazy"></div></div>'+
  '<div class="play-area"><h3>🏗️ Ta phrase grandit brique après brique</h3><div class="sentence grow-sentence">'+
- prefix.map(p=>'<span class="brick grow-locked" data-kind="'+E(p[1])+'">'+E(p[0])+'</span>').join("")+
- growPlaced.map(id=>'<button class="brick" data-kind="'+E(step.add[id][1])+'" data-remove="'+id+'">'+E(step.add[id][0])+' ×</button>').join("")+
+ growBuilt.map(p=>'<span class="brick grow-locked" data-kind="'+E(p[1])+'">'+E(p[0])+'</span>').join("")+
+ growPlaced.map(id=>{const piece=options.find(o=>o.id===id).piece;return '<button class="brick" data-kind="'+E(piece[1])+'" data-remove="'+id+'">'+E(piece[0])+' ×</button>'}).join("")+
  (!all.length?'<span class="placeholder">Construis ta phrase…</span>':'')+'</div>'+
- '<h3>🧰 Briques à ajouter</h3><div class="bank">'+ordered.filter(x=>!growPlaced.includes(x.id)).map(x=>'<button class="brick" data-kind="'+E(x.piece[1])+'" data-add="'+x.id+'">'+E(x.piece[0])+'</button>').join("")+'</div></div>'+
- '<div class="'+(growMessage?'feedback '+(growChecked?'success':'error'):'')+'" role="status">'+E(growMessage)+'</div>'+
- '<div class="actions"><button class="cta green" id="growCheck" '+(growPlaced.length!==step.add.length||growChecked?'disabled':'')+'>✔ Vérifier ma phrase</button>'+
+ '<h3>🧰 À toi de choisir : plusieurs briques peuvent convenir</h3><div class="bank">'+options.filter(o=>!growPlaced.includes(o.id)).map(o=>'<button class="brick" data-kind="'+E(o.piece[1])+'" data-add="'+o.id+'">'+E(o.piece[0])+'</button>').join("")+'</div></div>'+
+ '<div class="'+(growMessage?'feedback '+growStatus:'')+'" role="status">'+E(growMessage)+'</div>'+
+ '<div class="actions"><button class="cta green" id="growCheck" '+(growPlaced.length!==(growStage===0?2:1)||growChecked?'disabled':'')+'>✔ Vérifier ma phrase</button>'+
  '<button class="hint-btn" id="growHint">💡 Comprendre</button><button class="hint-btn" id="growReset">↶ Retirer les nouvelles briques</button>'+
- (growChecked?'<button class="cta blue" id="growNext">'+(growStage===d.steps.length-1?"🏆 Terminer la mission":"➜ Ajouter une brique")+'</button>':'')+'</div>'+
- '<p class="info-note">Les briques déjà validées restent en place. Tu ne recommences pas la phrase à chaque étape.</p>'+
+ (growChecked?'<button class="cta blue" id="growNext">'+(growStage===d.steps.length-1?"🏆 Terminer la mission":"➜ Enrichir encore")+'</button>':'')+'</div>'+
+ '<p class="info-note">Tes choix corrects restent dans la phrase. Une brique piège ne fait pas perdre la progression : tu peux la remplacer.</p>'+
  '<p class="small-muted">'+completed+' / '+total+' missions terminées dans ce parcours.</p></section>';
  $('#growBack').onclick=goHome;
- document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>{if(!growChecked){growPlaced.push(+b.dataset.add);growMessage="";renderGrow()}});
- document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{if(!growChecked){growPlaced.splice(growPlaced.indexOf(+b.dataset.remove),1);growMessage="";renderGrow()}});
- $('#growHint').onclick=()=>{growHint=true;growMessage=step.why;const box=screen().querySelector('[role=status]');box.className="feedback";box.textContent="💡 "+step.why};
- $('#growReset').onclick=()=>{growPlaced=[];growChecked=false;growMessage="";renderGrow()};
+ document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>{if(!growChecked){const limit=growStage===0?2:1;if(growPlaced.length>=limit)growPlaced.shift();growPlaced.push(b.dataset.add);growMessage="";growStatus="";renderGrow()}});
+ document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{if(!growChecked){growPlaced=growPlaced.filter(id=>id!==b.dataset.remove);growMessage="";renderGrow()}});
+ $('#growHint').onclick=()=>{growHint=true;const box=screen().querySelector('[role=status]');box.className="feedback";box.textContent="💡 "+step.why+" Plusieurs choix peuvent être corrects."};
+ $('#growReset').onclick=()=>{growPlaced=[];growChecked=false;growMessage="";growStatus="";renderGrow()};
  $('#growCheck').onclick=()=>{
-  const ok=growPlaced.every((v,i)=>v===i);
-  if(ok){growChecked=true;growMessage="Bien joué ! "+growText(all)+". "+step.why;beep(true)}
-  else{growMessage="Regarde l’ordre des briques : commence par repérer le sujet et le verbe.";beep(false)}
+  const chosen=growPlaced.map(id=>options.find(o=>o.id===id));
+  const valid=chosen.every(o=>o.valid)&&(growStage>0||chosen.every((o,i)=>o.order===i));
+  if(valid){growChecked=true;growMessage="Excellent ! "+growText(all)+". "+step.why;growStatus="success";beep(true)}
+  else{const trap=chosen.find(o=>!o.valid);growMessage=trap?trap.reason:"Vérifie l'ordre : commence par le sujet, puis le verbe.";growStatus="error";beep(false)}
   renderGrow()
  };
  const next=$('#growNext');if(next)next.onclick=()=>{
-  if(growStage<d.steps.length-1){growStage++;growPlaced=[];growChecked=false;growMessage="";renderGrow()}
-  else{growSave[growGrade+":"+growMission]=true;growPersist();growMessage="";if(growMission+1<total){growMission++;growStage=0;growPlaced=[];growChecked=false;renderGrow()}else{goHome();}}
+  growBuilt=growBuilt.concat(growPlaced.map(id=>options.find(o=>o.id===id).piece));
+  if(growStage<d.steps.length-1){growStage++;growPlaced=[];growChecked=false;growMessage="";growStatus="";renderGrow()}
+  else{growSave[growGrade+":"+growMission]=true;growPersist();if(growMission+1<total){growMission++;growStage=0;growBuilt=[];growPlaced=[];growChecked=false;growMessage="";growStatus="";renderGrow()}else{goHome()}}
  };
 }
 
