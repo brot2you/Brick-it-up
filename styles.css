@@ -150,3 +150,5 @@
 .v17-feature>div{flex:1}.v17-feature h2{margin:0 0 9px}
 @media(max-width:740px){.v17-grid{gap:12px}.v17-card{gap:9px;padding:9px;flex-direction:column;align-items:stretch}.v17-card img{width:100%;height:135px}.v17-label{padding:5px 6px 10px}.v17-feature img{width:85px;height:120px}.v17-hero{min-height:0}}
 @media(max-width:410px){.v17-card img{height:108px}.v17-label b{font-size:19px}.v17-label small{font-size:11px}.v17-grid{gap:9px}.v17-stats span{font-size:11px}}
+
+.v17-release{display:inline-block;background:#2549b9;color:#fff;border:3px solid #ffdc6b;border-radius:100px;padding:6px 13px;margin-bottom:8px;font-size:12px;font-weight:900;letter-spacing:.4px}
