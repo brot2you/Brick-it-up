@@ -112,3 +112,14 @@
 .adapt-progress{height:12px;border-radius:20px;background:#d9e7f6;margin:18px 0 22px;overflow:hidden}
 .adapt-progress>div{height:100%;border-radius:20px;background:linear-gradient(90deg,#23b777,#70d16d)}
 @media(max-width:680px){.adapt-levels{grid-template-columns:1fr}.adapt-level{min-height:0;padding:16px}.adapt-grades{gap:6px}}
+
+/* V16 — Grammar Lab */
+#grammarLaunch{display:block;margin:10px auto;max-width:100%;white-space:normal}
+.grammar-lab{max-width:1040px;margin:auto}
+.gl-grades{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.gl-active{background:#f8d66a!important;color:#54350d!important;border-color:#e6aa33!important}
+.gl-modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
+.gl-mode{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:9px;border:3px solid #8fc5f3;border-radius:20px;padding:16px;background:linear-gradient(140deg,#f9fdff,#d6edff);color:#24385f;box-shadow:0 5px #77a6d1;cursor:pointer;min-height:100px}
+.gl-mode strong{font-size:17px}.gl-mode small{font-size:12px}
+.grammar-lab .speech{margin:20px 0}
+@media(max-width:650px){.gl-modes{grid-template-columns:repeat(2,minmax(0,1fr))}.gl-mode{padding:12px}}
