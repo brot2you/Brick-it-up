@@ -152,3 +152,11 @@
 @media(max-width:410px){.v17-card img{height:108px}.v17-label b{font-size:19px}.v17-label small{font-size:11px}.v17-grid{gap:9px}.v17-stats span{font-size:11px}}
 
 .v17-release{display:inline-block;background:#2549b9;color:#fff;border:3px solid #ffdc6b;border-radius:100px;padding:6px 13px;margin-bottom:8px;font-size:12px;font-weight:900;letter-spacing:.4px}
+
+/* V19 : accueil illustré — images complètes, aucun texte en double */
+.v17-grid{gap:15px}
+.v17-card{display:block;padding:0!important;overflow:hidden;line-height:0;background:transparent!important;border:0!important;border-radius:22px!important;box-shadow:0 6px 0 #31497870,0 12px 25px #1b295536}
+.v17-card img{display:block;width:100%!important;height:auto!important;aspect-ratio:760/504;object-fit:contain!important;border-radius:22px!important}
+.v17-card:hover{transform:translateY(-3px)}
+.v17-card:focus-visible{outline:4px solid #ffca3d;outline-offset:4px}
+@media(max-width:600px){.v17-grid{grid-template-columns:1fr;gap:13px}.v17-card img{height:auto!important}}
