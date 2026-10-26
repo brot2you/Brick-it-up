@@ -118,7 +118,7 @@ function v17Module(kind){
 function renderHome(){
  screen().innerHTML='<section class="hero v17-hero"><div class="hero-content"><span class="eyebrow">YOUR ENGLISH ADVENTURE</span><img class="hero-logo" src="assets/brick-it-up-logo.png" alt="Brick It Up!"><p>Construis, progresse et transforme tes phrases en anglais !</p></div><div class="hero-friends" aria-hidden="true"><img src="assets/character-1.webp"><img src="assets/character-2.webp"><img src="assets/character-3.webp"><img src="assets/character-4.webp"></div></section>'+
  '<section class="v17-class"><div><h2>Mon aventure</h2><p>Choisis ta classe pour commencer.</p></div>'+homeGradeButtons()+'<div class="v17-stats"><span>🏅 '+save.cleared.length+' / '+q.length+' défis réussis</span><span>⭐ '+save.stars+' étoiles</span><span>🏆 '+unlockedBadges().length+' / '+BADGES.length+' badges</span></div></section>'+
- '<section class="v17-home"><h2>Que veux-tu faire aujourd’hui ?</h2><div class="v17-grid">'+
+ '<section class="v17-home"><div class="v17-release">NOUVEL ACCUEIL · V18</div><h2>Que veux-tu faire aujourd’hui ?</h2><div class="v17-grid">'+
  '<button class="v17-card" data-section="build"><img src="assets/world-card-1.webp" alt=""><span class="v17-label"><b>Construire</b><small>Les 5 mondes · Agrandis ta phrase · Free Build</small></span></button>'+
  '<button class="v17-card" data-section="progress"><img src="assets/world-card-2.webp" alt=""><span class="v17-label"><b>Progresser</b><small>Découverte · Consolidation · Expert</small></span></button>'+
  '<button class="v17-card" data-section="transform"><img src="assets/world-card-4.webp" alt=""><span class="v17-label"><b>Transformer</b><small>Grammar Lab · 5 manipulations</small></span></button>'+
