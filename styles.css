@@ -160,3 +160,25 @@
 .v17-card:hover{transform:translateY(-3px)}
 .v17-card:focus-visible{outline:4px solid #ffca3d;outline-offset:4px}
 @media(max-width:600px){.v17-grid{grid-template-columns:1fr;gap:13px}.v17-card img{height:auto!important}}
+
+/* V21 — carnet de compétences */
+.journal-access{margin:19px 0 6px;padding:16px;border:3px solid #f9d58d;border-radius:18px;background:linear-gradient(120deg,#e6f2ff,#fff6dc);display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+.journal-access span{font-weight:800;color:#465a83;font-size:13px}
+.journal{max-width:1080px;margin:auto}.journal h2{margin-top:25px}
+.journal-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}
+.journal-stats>div{display:flex;flex-direction:column;gap:7px;border-radius:16px;border:3px solid #b1d9ef;background:#e9f7ff;padding:14px;color:#274676}
+.journal-stats b{font-size:32px}.journal-stats small{font-size:12px;font-weight:800}
+.journal-levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.journal-level{padding:13px;border-radius:15px;background:#f2f6ff;border:2px solid #c5d6ee}
+.journal-level-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.journal-level-head span{font-size:12px;font-weight:800}
+.journal-meter{height:12px;border-radius:10px;background:#d5e2f3;overflow:hidden;margin-bottom:8px}
+.journal-meter>span{height:100%;display:block;background:#41b479;border-radius:10px}
+.journal-level small{color:#506486}
+.journal-recs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.journal-recs>div{display:flex;flex-direction:column;gap:8px;padding:13px;border:2px solid #f2c58d;background:#fff6e7;border-radius:13px}
+.journal-recs small{color:#795e38}
+.journal-chips{display:flex;gap:8px;flex-wrap:wrap}.journal-chips span{padding:10px 13px;background:#e8e2ff;border-radius:14px;font-weight:800}
+.journal-cefr{border:3px solid #b8ceff;border-radius:17px;padding:18px;background:#edf5ff}
+.journal-cefr>strong{font-size:22px;color:#325d9e}
+@media(max-width:700px){.journal-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.journal-levels,.journal-recs{grid-template-columns:1fr}}
