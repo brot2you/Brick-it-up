@@ -11,7 +11,7 @@ const pool={
  {subjects:['They','We','My friends','The children'],verbs:['play','watch','enjoy'],objects:['video games','cartoons','football'],places:['at home','in the garden','in the park'],times:['on Sundays','after school','every evening']}
 ],
 '5e':[
- {subjects:['She','My sister','Maya','The girl'],verbs:['reads','studies','practises'],objects:['English','French','Spanish'],places:['at school','in her room','at the library'],times:['every day','after school','on Mondays']},
+ {subjects:['She','My sister','Maya','The girl'],verbs:['learns','studies','practises'],objects:['English','French','Spanish'],places:['at school','in her room','at the library'],times:['every day','after school','on Mondays']},
  {subjects:['They','We','My friends','The students'],verbs:['study','practise','learn'],objects:['English','French','Spanish'],places:['at school','at home','in the classroom'],times:['every week','after lunch','on Fridays']}
 ],
 '4e':[
@@ -19,7 +19,7 @@ const pool={
  {subjects:['They','We','My friends','The students'],verbs:['watched','enjoyed','saw'],objects:['a film','a concert','a show'],places:['in London','with their friends','during the holiday'],times:['yesterday','last week','on Saturday']}
 ],
 '3e':[
- {subjects:['She','The athlete','Maya','The teenager'],verbs:['trained','worked','studied'],objects:['hard','regularly','together'],places:['at home','at school','in London'],times:['last year','during the holidays','on Saturday']},
+ {subjects:['She','The athlete','Maya','The teenager'],verbs:['trained','worked','studied'],objects:['hard','regularly','intensively'],places:['at home','at school','in London'],times:['last year','during the holidays','on Saturday']},
  {subjects:['They','We','The students','My friends'],verbs:['trained','worked','studied'],objects:['hard','regularly','together'],places:['at home','at school','in London'],times:['last year','during the holidays','on Saturday']}
 ]};
 const grammar={
