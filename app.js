@@ -123,7 +123,7 @@ function renderHome(){
  '<button class="v17-card" data-section="progress" aria-label="Progresser : parcours adaptatifs"><img src="assets/rubrique-progresser.png" alt=""></button>'+
  '<button class="v17-card" data-section="transform" aria-label="Transformer : Grammar Lab"><img src="assets/rubrique-transformer.png" alt=""></button>'+
  '<button class="v17-card" id="v17Trophies" aria-label="Ma collection : trophées et badges"><img src="assets/rubrique-ma-collection.png" alt=""></button>'+
- '</div></section>';
+ '</div><div class="journal-access"><button id="openSkillsJournal" class="cta blue">📘 Mon carnet de compétences</button><span>Mes acquis · Mes erreurs · Mes révisions · Repères CECRL</span></div></section>';
  bindGradeButtons();document.querySelectorAll('[data-section]').forEach(b=>b.onclick=()=>v17Module(b.dataset.section));$('#v17Trophies').onclick=renderTrophies;const journalBtn=$('#openSkillsJournal');if(journalBtn)journalBtn.onclick=()=>window.openSkillsJournal?window.openSkillsJournal():alert('Actualise la page pour charger le carnet.');
 }
 function start(w,m='build'){world=w;mode=m;selected=[];checked=false;hintShown=false;let matches=q.map((x,i)=>x.w===world?i:-1).filter(i=>i>=0);index=matches.find(i=>!save.cleared.includes(i))??matches[0];if(mode==='free')renderFree();else renderGame()}
