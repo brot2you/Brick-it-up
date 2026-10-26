@@ -124,7 +124,7 @@ function renderHome(){
  '<button class="v17-card" data-section="transform" aria-label="Transformer : Grammar Lab"><img src="assets/rubrique-transformer.png" alt=""></button>'+
  '<button class="v17-card" id="v17Trophies" aria-label="Ma collection : trophées et badges"><img src="assets/rubrique-ma-collection.png" alt=""></button>'+
  '</div></section>';
- bindGradeButtons();document.querySelectorAll('[data-section]').forEach(b=>b.onclick=()=>v17Module(b.dataset.section));$('#v17Trophies').onclick=renderTrophies;
+ bindGradeButtons();document.querySelectorAll('[data-section]').forEach(b=>b.onclick=()=>v17Module(b.dataset.section));$('#v17Trophies').onclick=renderTrophies;const journalBtn=$('#openSkillsJournal');if(journalBtn)journalBtn.onclick=()=>window.openSkillsJournal?window.openSkillsJournal():alert('Actualise la page pour charger le carnet.');
 }
 function start(w,m='build'){world=w;mode=m;selected=[];checked=false;hintShown=false;let matches=q.map((x,i)=>x.w===world?i:-1).filter(i=>i>=0);index=matches.find(i=>!save.cleared.includes(i))??matches[0];if(mode==='free')renderFree();else renderGame()}
 function sceneHtml(item){const pictures=['scene-01','scene-02','scene-03','scene-04','scene-05','scene-06','scene-07','scene-08','scene-09','scene-10'];const idx=q.indexOf(item);const sceneIds=[0,1,2,3,4,5,6,7,1,8,9,2,7,8,0,2,6,7,5,9,1,7,8,9,6,2,1,6,8,7,5,0,9];const n=sceneIds[idx]??(idx%pictures.length);return `<div class="scene illustrated-scene"><img src="assets/scenes/${pictures[n]}.webp" alt="Illustration du défi : ${E(item.p)}" loading="lazy"></div>`}
