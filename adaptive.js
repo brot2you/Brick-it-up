@@ -15,12 +15,12 @@ const pool={
  {subjects:['They','We','My friends','The students'],verbs:['study','practise','learn'],objects:['English','French','Spanish'],places:['at school','at home','in the classroom'],times:['every week','after lunch','on Fridays']}
 ],
 '4e':[
- {subjects:['She','My brother','Leo','The student'],verbs:['watched','visited','enjoyed'],objects:['a film','a museum','a concert'],places:['in London','with her family','last summer'],times:['yesterday','last week','on Saturday']},
- {subjects:['They','We','My friends','The students'],verbs:['watched','visited','enjoyed'],objects:['a film','a museum','a concert'],places:['in London','with their friends','during the holiday'],times:['yesterday','last week','on Saturday']}
+ {subjects:['She','My brother','Leo','The student'],verbs:['watched','enjoyed','saw'],objects:['a film','a concert','a show'],places:['in London','with her family','last summer'],times:['yesterday','last week','on Saturday']},
+ {subjects:['They','We','My friends','The students'],verbs:['watched','enjoyed','saw'],objects:['a film','a concert','a show'],places:['in London','with their friends','during the holiday'],times:['yesterday','last week','on Saturday']}
 ],
 '3e':[
- {subjects:['She','The athlete','Maya','The teenager'],verbs:['trained','worked','studied'],objects:['hard','regularly','every day'],places:['at home','at school','in London'],times:['last year','during the holidays','on Saturday']},
- {subjects:['They','We','The students','My friends'],verbs:['trained','worked','studied'],objects:['hard','regularly','every day'],places:['at home','at school','in London'],times:['last year','during the holidays','on Saturday']}
+ {subjects:['She','The athlete','Maya','The teenager'],verbs:['trained','worked','studied'],objects:['hard','regularly','together'],places:['at home','at school','in London'],times:['last year','during the holidays','on Saturday']},
+ {subjects:['They','We','The students','My friends'],verbs:['trained','worked','studied'],objects:['hard','regularly','together'],places:['at home','at school','in London'],times:['last year','during the holidays','on Saturday']}
 ]};
 const grammar={
 '6e':['sujet','accord','complément','temps'],
