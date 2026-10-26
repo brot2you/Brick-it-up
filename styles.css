@@ -194,3 +194,14 @@
 .finale textarea{width:100%;box-sizing:border-box;min-height:170px;border-radius:15px;border:3px solid #93bcdd;padding:14px;font:inherit;background:#fff;color:#1e3359;resize:vertical}
 .final-checks{display:grid;gap:11px;margin:12px 0}.final-checks label{display:flex;align-items:center;gap:12px;padding:11px 13px;background:#f1f6ff;border-radius:12px}.final-checks input{width:19px;height:19px}
 @media(max-width:640px){.final-grid{grid-template-columns:1fr}.final-head{grid-template-columns:1fr}.final-head img{height:140px}.final-entry img{width:85px;height:100px}}
+
+/* V27: illustrations indépendantes, boutons HTML, dimensions contrôlées */
+.v17-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+.v17-card.v27-card{box-sizing:border-box;position:relative;display:flex;flex-direction:column;overflow:hidden;min-width:0;width:100%;padding:0!important;line-height:normal;background:#e8f0ff!important;border:3px solid #fff!important;border-radius:21px!important;box-shadow:0 6px 0 #384a8c7d,0 14px 24px #192d5a33;cursor:pointer}
+.v17-card.v27-card>img{width:100%!important;max-width:100%!important;height:auto!important;aspect-ratio:3/2!important;object-fit:cover!important;object-position:center!important;display:block;border-radius:17px 17px 0 0!important;flex:none}
+.v27-card-info{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;min-height:60px;padding:11px 14px;background:linear-gradient(115deg,#2466d3,#744ac9);color:#fff}
+.v27-card-info strong{font-size:clamp(18px,2.1vw,26px);font-weight:1000}.v27-card-info small{font-size:12px;line-height:1.25;flex:1;min-width:100px;font-weight:750}.v27-play{display:inline-block;padding:8px 13px;background:#ffdb40;color:#263c72;font-weight:1000;border-radius:12px;box-shadow:0 3px #d99932;white-space:nowrap}
+.v27-card[data-section="progress"] .v27-card-info{background:linear-gradient(115deg,#386ac4,#815ac9)}
+.v27-card[data-section="transform"] .v27-card-info{background:linear-gradient(115deg,#0c9679,#8150bc)}
+#v17Trophies.v27-card .v27-card-info{background:linear-gradient(115deg,#d57b14,#f1a719)}
+@media(max-width:800px){.v17-grid{grid-template-columns:1fr;gap:15px}.v27-card-info{padding:12px}.v27-card-info small{font-size:12px}}
